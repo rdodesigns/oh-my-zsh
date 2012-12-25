@@ -24,7 +24,7 @@ h3. The manual way
 
 1. Clone the repository
 
-  @git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh@
+  @git clone git://github.com/rdodesigns/oh-my-zsh.git ~/.oh-my-zsh@
 
 2. *OPTIONAL* Backup your existing ~/.zshrc file
 
@@ -76,7 +76,7 @@ h3. (Don't) Send us your theme! (for now)
 
 -I'm hoping to collect a bunch of themes for our command prompts. You can see existing ones in the @themes/@ directory.-
 
-We have enough themes for the time being. Please fork the project and add on in there, you can let people know how to grab it from there. 
+We have enough themes for the time being. Please fork the project and add on in there, you can let people know how to grab it from there.
 
 
 
