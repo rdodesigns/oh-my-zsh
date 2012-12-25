@@ -2,6 +2,9 @@
 alias pu='pushd'
 alias po='popd'
 
+MVIM=/Applications/MacVim.app/Contents/MacOS/Vim
+[[ -x $MVIM ]] && alias vim=$MVIM
+
 # Basic directory operations
 alias ...='cd ../..'
 alias -- -='cd -'
