@@ -51,6 +51,9 @@ ZSH_THEME="agnoster-alt"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 
+# Alternative plugin settings for development use on a Mac
+#plugins=(git encode64 macports osx vi-mode git-flow)
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
