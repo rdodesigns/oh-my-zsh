@@ -41,3 +41,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+
+# Default path used by Mac OS X, ending with the MacPorts and local bin
+# directories.
+#export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/texbin:/opt/X11/bin:/opt/local/bin:~/bin
