@@ -80,6 +80,13 @@ h3. Uninstalling
 
 If you want to uninstall it, just run @uninstall_oh_my_zsh@ from the command line and it'll remove itself and revert you to bash (or your previous zsh config).
 
+h2. Information for getting agnoster or other powerline based themes to show the correct symbols.
+
+If, when you download this bundle, the left prompt appears to have strange symbols instead of arrows (>) when using the agnoster or agnoster-alt theme, you will need the Menlo-Powerline font. See this "gist":https://gist.github.com/3712874 for more details. This assumes that you use Menlo with this theme.
+A good combination with the agnoster theme is the "PragmataPro":http://www.fsd.it/fonts/pragmatapro.htm font. If you have this font (version 0.811) the Menlo-Powerline font will be unnecessary.
+
+
+
 h2. Help out!
 
 I'm far from being a zsh-expert and suspect there are many ways to improve. If you have ideas on how to make the configuration easier to maintain (and faster), don't hesitate to fork and send pull requests!
