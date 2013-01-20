@@ -116,3 +116,6 @@ build_prompt() {
 }
 
 PROMPT='%{%f%b%k%}$(build_prompt) '
+
+### Include
+MODE_INDICATOR='%{%F{red}%}N'
