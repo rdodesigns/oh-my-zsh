@@ -119,3 +119,11 @@ PROMPT='%{%f%b%k%}$(build_prompt) '
 
 ### Include
 MODE_INDICATOR='%{%F{red}%}N'
+
+### Set RPROMPT to ssh ip address if ssh'd in.
+if [[ -n $SSH_CLIENT ]]; then
+  local SSH_IP_ADDR=`echo ${SSH_CLIENT} | cut -d ' ' -f 1`
+  local SSH_IP_COLOR='cyan'
+  local SSH_IP="%{%F{${SSH_IP_COLOR}}%}${SSH_IP_ADDR}"
+  RPROMPT='${${KEYMAP/vicmd/${SSH_IP} ${MODE_INDICATOR}}/(main|viins)/${SSH_IP}}'
+fi
