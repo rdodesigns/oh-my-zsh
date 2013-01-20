@@ -65,9 +65,7 @@ prompt_end() {
 prompt_context() {
   local user=`whoami`
 
-  if [[ -n "$SSH_CLIENT" ]]; then
-    prompt_segment black $orange "%(!.%{%F{yellow}%}.)$user@%m"
-  elif [[ "$user" != "$DEFAULT_USER" ]]; then
+  if [[  "$user" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     prompt_segment black default "%(!.%{%F{yellow}%}.)$user@%m"
   fi
 }
@@ -118,3 +116,14 @@ build_prompt() {
 }
 
 PROMPT='%{%f%b%k%}$(build_prompt) '
+
+### Include
+MODE_INDICATOR='%{%F{red}%}N'
+
+### Set RPROMPT to ssh ip address if ssh'd in.
+if [[ -n $SSH_CLIENT ]]; then
+  local SSH_IP_ADDR=`echo ${SSH_CLIENT} | cut -d ' ' -f 1`
+  local SSH_IP_COLOR='cyan'
+  local SSH_IP="%{%F{${SSH_IP_COLOR}}%}${SSH_IP_ADDR}"
+  RPROMPT='${${KEYMAP/vicmd/${SSH_IP} ${MODE_INDICATOR}}/(main|viins)/${SSH_IP}}'
+fi
