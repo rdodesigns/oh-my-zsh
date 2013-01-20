@@ -28,6 +28,9 @@
 CURRENT_BG='NONE'
 SEGMENT_SEPARATOR='⮀'
 
+### Added 256 colours
+orange='214'
+
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
 # rendering default background/foreground.
@@ -62,7 +65,9 @@ prompt_end() {
 prompt_context() {
   local user=`whoami`
 
-  if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+  if [[ -n "$SSH_CLIENT" ]]; then
+    prompt_segment black $orange "%(!.%{%F{yellow}%}.)$user@%m"
+  elif [[ "$user" != "$DEFAULT_USER" ]]; then
     prompt_segment black default "%(!.%{%F{yellow}%}.)$user@%m"
   fi
 }
