@@ -64,7 +64,7 @@ prompt_end() {
 prompt_context() {
   local user=`whoami`
 
-  if [[  "$user" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+  if [[  "$user" != "$DEFAULT_USER" || -n "$SSH_CONNECTION" ]]; then
     prompt_segment black default "%(!.%{%F{yellow}%}.)$user@%m"
   fi
 }
@@ -131,7 +131,7 @@ rprompt_segment() {
 
 
 ssh_ip() {
-  local SSH_IP_ADDR=`echo ${SSH_CLIENT} | cut -d ' ' -f 1`
+  local SSH_IP_ADDR=`echo ${SSH_CONNECTION} | cut -d ' ' -f 1`
   rprompt_segment black default "$SSH_IP_ADDR"
 }
 
@@ -141,7 +141,7 @@ ssh_ip() {
 MODE_INDICATOR="$(rprompt_segment red white "N")"
 
 # Set RPROMPT to origin ip address if ssh'd in.
-if [[ -n $SSH_CLIENT ]]; then
+if [[ -n $SSH_CONNECTION ]]; then
   local SSH_IP="$(ssh_ip)"
   RPROMPT='${${KEYMAP/vicmd/${SSH_IP}${MODE_INDICATOR}}/(main|viins)/${SSH_IP}}'
 fi
