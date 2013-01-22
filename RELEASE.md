@@ -1,3 +1,18 @@
+Release 0.2.0 (2013/01/22 00:10 UTC-8)
+======================================
+
+Agnoster alt theme now includes a right sided prompt. It shows two things.
+
+  1. If the terminal is through an SSH connection, then the IP address of the
+     computer which initiated the SSH connection is shown.
+  2. Using the vi-mode plugin, a red mode indicator appears when
+     in normal mode.
+
+Added the screenshot to the project.
+
+There are no bug fixes in this release.
+
+
 Release 0.1.3 (2013/01/20 04:29 UTC-8)
 ======================================
 
