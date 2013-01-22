@@ -1,4 +1,4 @@
-!https://s3.amazonaws.com/ohmyzsh/oh-my-zsh-logo.png!
+!https://raw.github.com/rdodesigns/oh-my-zsh/master/omz_agnoster_alt_theme.png(Agnoster Alt theme)!
 
 oh-my-zsh is an open source, community-driven framework for managing your ZSH configuration. It comes bundled with a ton of helpful functions, helpers, plugins, themes, and few things that make you shout...
 
