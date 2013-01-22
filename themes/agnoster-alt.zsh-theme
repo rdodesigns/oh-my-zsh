@@ -27,9 +27,7 @@
 
 CURRENT_BG='NONE'
 SEGMENT_SEPARATOR='⮀'
-
-### Added 256 colours
-orange='214'
+RSEGMENT_SEPARATOR='⮂'
 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
@@ -46,6 +44,7 @@ prompt_segment() {
   CURRENT_BG=$1
   [[ -n $3 ]] && echo -n $3
 }
+
 
 # End the prompt, closing any open segments
 prompt_end() {
@@ -117,13 +116,32 @@ build_prompt() {
 
 PROMPT='%{%f%b%k%}$(build_prompt) '
 
-### Include
-MODE_INDICATOR='%{%F{red}%}N'
 
-### Set RPROMPT to ssh ip address if ssh'd in.
-if [[ -n $SSH_CLIENT ]]; then
+### Code related to the right side of the prompt
+
+rprompt_segment() {
+  local bg fg
+  [[ -n $1 ]] && bg="$1" || bg="default"
+  [[ -n $2 ]] && fg="$2" || fg="default"
+
+  echo -n " %{%F{$bg%}%}$RSEGMENT_SEPARATOR%{%F{$fg%}%}%{%K{$bg%}%} "
+
+  [[ -n $3 ]] && echo -n "$3 "
+}
+
+
+ssh_ip() {
   local SSH_IP_ADDR=`echo ${SSH_CLIENT} | cut -d ' ' -f 1`
-  local SSH_IP_COLOR='cyan'
-  local SSH_IP="%{%F{${SSH_IP_COLOR}}%}${SSH_IP_ADDR}"
-  RPROMPT='${${KEYMAP/vicmd/${SSH_IP} ${MODE_INDICATOR}}/(main|viins)/${SSH_IP}}'
+  rprompt_segment black default "$SSH_IP_ADDR"
+}
+
+## Set RHS variables
+
+# When using vi-mode, show with right sided powerline
+MODE_INDICATOR="$(rprompt_segment red white "N")"
+
+# Set RPROMPT to origin ip address if ssh'd in.
+if [[ -n $SSH_CLIENT ]]; then
+  local SSH_IP="$(ssh_ip)"
+  RPROMPT='${${KEYMAP/vicmd/${SSH_IP}${MODE_INDICATOR}}/(main|viins)/${SSH_IP}}'
 fi
