@@ -138,7 +138,7 @@ ssh_ip() {
 ## Set RHS variables
 
 # When using vi-mode, show with right sided powerline
-MODE_INDICATOR="$(rprompt_segment red white "N")"
+MODE_INDICATOR="$(rprompt_segment white black "N")"
 
 # Set RPROMPT to origin ip address if ssh'd in.
 if [[ -n $SSH_CONNECTION ]]; then
