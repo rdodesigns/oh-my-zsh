@@ -50,10 +50,12 @@ prompt_segment() {
 prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
     echo -n " %{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
+    #echo -n " %{%K{235}%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
   else
     echo -n "%{%k%}"
   fi
   echo -n "%{%f%}"
+  #echo -n "%{%K{235}%}%{%F{255}%}"
   CURRENT_BG=''
 }
 
