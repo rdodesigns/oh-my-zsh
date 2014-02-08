@@ -49,10 +49,6 @@ ZSH_THEME="agnoster-alt"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
-
-# Alternative plugin settings for development use on a Mac
-#plugins=(git encode64 macports osx vi-mode git-flow)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -73,3 +69,22 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+## Ctrl-Z calls push-input, with one key alteration.
+## http://goo.gl/RW5f9B
+## "As an additional convenience, if the command line is empty when I type
+## Ctrl+Z, the key invokes the bg built-in instead (so a double Ctrl+Z sends a
+## running command directly to the background)."
+fancy-ctrl-z () {
+  emulate -LR zsh
+  if [[ $#BUFFER -eq 0 ]]; then
+    bg
+    zle redisplay
+  else
+    zle push-input
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z'          fancy-ctrl-z
+
+# Customize to your needs...
