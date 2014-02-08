@@ -5,6 +5,12 @@ alias po='popd'
 MVIM=/Applications/MacVim.app/Contents/MacOS/Vim
 [[ -x $MVIM ]] && alias vim=$MVIM
 
+JULIA=/Applications/Julia-0.2.0.app/Contents/Resources/julia/bin/julia
+[[ -x $JULIA ]] && alias julia=$JULIA
+
+XPRA=/Applications/Window-Switch.app/Contents/Helpers/xpra
+[[ -x $XPRA ]] && alias xpra=$XPRA
+
 # Basic directory operations
 alias ...='cd ../..'
 alias -- -='cd -'
@@ -43,8 +49,18 @@ alias please='sudo'
 #alias g='grep -in'
 
 # Show history
-alias history='fc -l 1'
-
+if [ "$HIST_STAMPS" = "mm/dd/yyyy" ]
+then
+    alias history='fc -fl 1'
+elif [ "$HIST_STAMPS" = "dd.mm.yyyy" ]
+then
+    alias history='fc -El 1'
+elif [ "$HIST_STAMPS" = "yyyy-mm-dd" ]
+then
+    alias history='fc -il 1'
+else
+    alias history='fc -l 1'
+fi
 # List direcory contents
 alias lsa='ls -lah'
 alias l='ls -la'
