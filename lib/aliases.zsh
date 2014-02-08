@@ -5,6 +5,12 @@ alias po='popd'
 MVIM=/Applications/MacVim.app/Contents/MacOS/Vim
 [[ -x $MVIM ]] && alias vim=$MVIM
 
+JULIA=/Applications/Julia-0.2.0.app/Contents/Resources/julia/bin/julia
+[[ -x $JULIA ]] && alias julia=$JULIA
+
+XPRA=/Applications/Window-Switch.app/Contents/Helpers/xpra
+[[ -x $XPRA ]] && alias xpra=$XPRA
+
 # Basic directory operations
 alias ...='cd ../..'
 alias -- -='cd -'
